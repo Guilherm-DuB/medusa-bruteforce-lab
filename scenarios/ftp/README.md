@@ -170,7 +170,7 @@ Além da execução técnica, o experimento reforçou a importância de polític
 ![Execução do Medusa](../../screenshots/ftp/03-execucao-medusa.jpg)
 
 ### 11.4 Login realizado com sucesso
-![Login FTP com sucesso](../../screenshots/ftp/04-login-success.jpg)
+![Login FTP com sucesso](../../screenshots/ftp/04-login-sucess.jpg)
 
 As capturas de tela deste cenário estão disponíveis no diretório:
 

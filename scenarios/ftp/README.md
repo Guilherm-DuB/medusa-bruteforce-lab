@@ -80,13 +80,10 @@ root
 **Arquivo pass.txt:**
 
 ```text
-123456
-password
-qwerty
-msfadmin
+[Conteúdo omitido por segurança]
 ```
 
-As listas foram utilizadas exclusivamente no ambiente de laboratório.
+As wordlists foram utilizadas exclusivamente no ambiente de laboratório. Por segurança, as senhas utilizadas não são divulgadas neste repositório público.
 
 ## 6. Execução do teste com Medusa
 

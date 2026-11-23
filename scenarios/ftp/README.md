@@ -160,6 +160,18 @@ Além da execução técnica, o experimento reforçou a importância de polític
 
 ## 11. Evidências
 
+### 11.1 Reconhecimento com Nmap
+![Reconhecimento Nmap](../../screenshots/ftp/01-reconhecimento-nmap.jpg)
+
+### 11.2 Teste manual de conexão FTP
+![Teste manual FTP](../../screenshots/ftp/02-teste-manual-ftp.jpg)
+
+### 11.3 Execução do Medusa
+![Execução do Medusa](../../screenshots/ftp/03-execucao-medusa.jpg)
+
+### 11.4 Login realizado com sucesso
+![Login FTP com sucesso](../../screenshots/ftp/04-login-success.jpg)
+
 As capturas de tela deste cenário estão disponíveis no diretório:
 
 ```text

@@ -1,23 +1,48 @@
 # Arquitetura do Laboratório
 
-Este documento apresenta a arquitetura do ambiente virtual utilizado
-nos testes de segurança.
+## 1. Visão geral
 
-## Máquinas virtuais
+O laboratório foi desenvolvido utilizando máquinas virtuais no VirtualBox, com o objetivo de simular ataques de força bruta em um ambiente controlado.
 
-- Kali Linux: máquina utilizada para os testes.
-- Metasploitable 2: máquina vulnerável utilizada como alvo.
-- DVWA: aplicação web vulnerável utilizada nos testes web.
+A comunicação entre as máquinas ocorre por meio de uma rede Host-only.
 
-## Rede
+## 2. Componentes do laboratório
 
-Tipo de rede: Host-only
+| Máquina | Função | Endereço IP |
+|---|---|---|
+| Kali Linux | Máquina atacante | 192.168.56.101 |
+| Metasploitable 2 | Máquina-alvo | 192.168.56.102 |
+| DVWA | Aplicação web vulnerável | Hospedada no ambiente de testes |
 
-## Endereçamento IP
+## 3. Arquitetura da rede
 
-- Máquina atacante: [IP do Kali]
-- Máquina alvo: 192.168.56.102
+- **Virtualização:** Oracle VirtualBox.
+- **Tipo de rede:** Host-only.
+- **Máquina atacante:** Kali Linux.
+- **Máquina-alvo:** Metasploitable 2.
 
-## Topologia
+## 4. Diagrama da arquitetura
 
-[Adicionar diagrama da arquitetura]
+```text
+       LABORATÓRIO DE CIBERSEGURANÇA
+                 VirtualBox
+                      |
+              Rede Host-only
+                      |
+          -----------------------
+          |                     |
+      Kali Linux          Metasploitable 2
+   192.168.56.101          192.168.56.102
+       Atacante                 Alvo
+                                |
+                         Serviços vulneráveis
+                         FTP / SMB / HTTP
+                                |
+                              DVWA
+```
+
+## 5. Observações
+
+O ambiente foi configurado para fins educacionais, permitindo a execução de testes de autenticação em serviços e aplicações vulneráveis sem envolver sistemas externos.
+
+Os endereços IP apresentados correspondem às máquinas utilizadas durante os testes do laboratório.

@@ -20,7 +20,7 @@ Explorar o funcionamento de ataques automatizados de tentativa de credenciais ut
 | Cenário | Descrição | Status |
 |---|---|---|
 | FTP | Simulação de força bruta contra serviço FTP | Concluído |
-| Web (DVWA) | Teste de autenticação em formulário web | Concluído |
+| Web (DVWA) | Teste de autenticação em formulário web | Concluído - resultado inconclusivo |
 | SMB | Simulação de Password Spraying | Concluído |
 
 ## 📂 Estrutura do projeto

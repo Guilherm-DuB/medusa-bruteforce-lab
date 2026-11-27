@@ -48,7 +48,7 @@ A execução apresentou diferentes combinações de credenciais e identificou um
 
 **Evidência:**
 
-![Execução do Medusa](../../screenshots/smb/execucao-medusa.png)
+![Execução do Medusa](../../screenshots/smb/execucao-medusa_smb.png)
 
 ## 5. Resultado obtido
 

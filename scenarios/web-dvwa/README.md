@@ -15,25 +15,25 @@ O objetivo foi observar o funcionamento do módulo `web-form` e analisar suas li
 - **Ferramenta:** Medusa 2.3
 - **Módulo utilizado:** `web-form`
 - **Nível de segurança do DVWA:** Low
-
+  
 ## 3. Configuração do DVWA
 
 Após acessar a aplicação, foi configurado o nível de segurança como **Low**.
+
+**Evidência da configuração do DVWA:**
+
+![Configuração do DVWA](../../screenshots/web-dvwa/configuracao-dvwa.png)
 
 Em seguida, foi acessada a funcionalidade **Brute Force**, que disponibiliza um formulário com os campos:
 
 - Username
 - Password
-- 
-**Evidência do formulário:**
+
+**Evidência do formulário Brute Force:**
 
 ![Formulário Brute Force](../../screenshots/web-dvwa/formulario-brute-force.png)
 
 Também foi analisado o código-fonte da funcionalidade para identificar os parâmetros utilizados no processo de autenticação.
-
-**Evidência:**
-
-![Configuração do DVWA](../../screenshots/web-dvwa/configuracao-dvwa.png)
 
 ## 4. Análise da requisição HTTP
 

@@ -2,7 +2,7 @@
 
 ## 1. Objetivo
 
-Simular um teste de força bruta contra um formulário de autenticação web utilizando Kali Linux e Medusa, em um ambiente controlado.
+Simular um teste de força bruta contra um formulário de autenticação web utilizando Kali Linux e Medusa, em um ambiente virtual controlado.
 
 O objetivo foi observar o funcionamento do módulo `web-form` e analisar suas limitações durante a identificação de credenciais.
 
@@ -12,13 +12,13 @@ O objetivo foi observar o funcionamento do módulo `web-form` e analisar suas li
 - **Máquina-alvo:** Metasploitable 2
 - **Aplicação:** Damn Vulnerable Web Application (DVWA)
 - **Endereço IP:** `192.168.56.102`
-- **Ferramenta:** Medusa 2.3-3
+- **Ferramenta:** Medusa 2.3
 - **Módulo utilizado:** `web-form`
 - **Nível de segurança do DVWA:** Low
 
 ## 3. Configuração do DVWA
 
-Após acessar a aplicação, foi configurado o nível de segurança como Low.
+Após acessar a aplicação, foi configurado o nível de segurança como **Low**.
 
 Em seguida, foi acessada a funcionalidade **Brute Force**, que disponibiliza um formulário com os campos:
 
@@ -27,47 +27,57 @@ Em seguida, foi acessada a funcionalidade **Brute Force**, que disponibiliza um 
 
 Também foi analisado o código-fonte da funcionalidade para identificar os parâmetros utilizados no processo de autenticação.
 
+**Evidência:**
+
+![Configuração do DVWA](../../screenshots/web-dvwa/configuracao-dvwa.png)
+
 ## 4. Análise da requisição HTTP
 
-Utilizando as ferramentas de desenvolvedor do Firefox, na aba Network, foi possível observar as requisições realizadas durante as tentativas de autenticação.
+Foi utilizado o painel de desenvolvedor do navegador, na aba Network, para observar as requisições realizadas durante uma tentativa de autenticação.
 
-Foram identificados os seguintes parâmetros:
+A análise permitiu identificar:
 
-- `username`: usuário informado.
-- `password`: senha informada.
-- `Login`: parâmetro de envio do formulário.
+- Método HTTP utilizado: GET.
+- Caminho da funcionalidade: `/dvwa/vulnerabilities/brute/`.
+- Parâmetros enviados: `username`, `password` e `Login`.
+- Utilização de cookies de sessão.
 
-A análise também permitiu observar a resposta HTTP retornada pela aplicação.
+Essas informações foram utilizadas para configurar o módulo `web-form` do Medusa.
 
-## 5. Execução do Medusa
+**Evidência:**
 
-Foi utilizado o módulo `web-form` para realizar as tentativas automatizadas de autenticação.
+![Análise da requisição HTTP](../../screenshots/web-dvwa/analise-requisicao.png)
 
-O comando utilizado seguiu a seguinte estrutura:
+## 5. Configuração do formulário
 
-```bash
-medusa -h 192.168.56.102 -U users.txt -P pass.txt -M web-form
-```
+Com as informações identificadas na análise HTTP, foram definidos os parâmetros necessários para a execução do teste:
 
-Foram adicionados parâmetros específicos para indicar o caminho do formulário, os campos enviados, a mensagem de falha e o cabeçalho de sessão.
+- Caminho do formulário.
+- Parâmetros de usuário e senha.
+- Mensagem apresentada quando a autenticação falha.
+- Cookie de sessão utilizado pelo DVWA.
 
-## 6. Resultado observado
+O objetivo foi permitir que o Medusa reproduzisse as tentativas de autenticação realizadas pelo formulário web.
 
-Durante a execução, o Medusa apresentou mensagens `ACCOUNT FOUND` e classificou diferentes combinações de usuário e senha como `SUCCESS`.
+## 6. Execução do Medusa
 
-Entretanto, os resultados não foram considerados confiáveis, pois combinações inválidas também foram classificadas como bem-sucedidas.
+Foi utilizado o módulo `web-form` para realizar as tentativas automatizadas com as listas de usuários e senhas preparadas para o laboratório.
 
-Dessa forma, não foi possível confirmar a descoberta de credenciais válidas por meio da ferramenta.
+A execução foi realizada com o comando configurado para o formulário DVWA, utilizando o endereço IP da máquina-alvo e os parâmetros identificados anteriormente.
 
-## 7. Análise técnica
+## 7. Resultado obtido
 
-Durante o experimento, foi identificada uma limitação na interpretação das respostas HTTP pelo módulo `web-form`.
+Durante a execução, o Medusa apresentou mensagens `ACCOUNT FOUND` e classificou algumas combinações como `SUCCESS`.
 
-O módulo utiliza o parâmetro `DENY-SIGNAL` para identificar mensagens de falha. Quando o texto configurado não é encontrado na resposta recebida, a tentativa pode ser classificada como bem-sucedida.
+Entretanto, foram observados resultados positivos para diferentes combinações, inclusive combinações que não haviam sido confirmadas manualmente.
 
-No cenário testado, esse comportamento resultou em falsos positivos.
+Isso indicou que a configuração do critério de identificação de sucesso não estava distinguindo corretamente as respostas de autenticação.
 
-Isso demonstrou a importância de analisar as respostas da aplicação e validar os resultados obtidos por ferramentas automatizadas.
+Portanto, os resultados foram considerados **inconclusivos**, não sendo possível afirmar que todas as combinações identificadas correspondiam a credenciais válidas.
+
+**Evidência:**
+
+![Execução do Medusa](../../screenshots/web-dvwa/teste-medusa.png)
 
 ## 8. Medidas defensivas
 
@@ -92,17 +102,14 @@ A atividade reforçou a importância de não considerar automaticamente os resul
 
 As capturas de tela deste cenário estão organizadas no diretório:
 
-```text
-screenshots/web-dvwa/
-```
+`screenshots/web-dvwa/`
 
 As evidências incluem:
 
-- Configuração do nível de segurança do DVWA.
-- Formulário de autenticação.
-- Análise da requisição HTTP.
-- Execução do Medusa.
-- Resultado das tentativas automatizadas.
+1. Configuração do nível de segurança do DVWA.
+2. Formulário de autenticação.
+3. Análise da requisição HTTP.
+4. Execução do Medusa e resultados apresentados.
 
 ## 11. Aviso de segurança
 

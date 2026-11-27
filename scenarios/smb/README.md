@@ -4,7 +4,7 @@
 
 Realizar testes automatizados de autenticação contra o serviço SMB utilizando Kali Linux e Medusa, em um ambiente virtual controlado.
 
-O objetivo foi compreender o funcionamento do módulo `smbnt`, identificar possíveis combinações de credenciais válidas e verificar o acesso aos compartilhamentos de rede.[
+O objetivo foi compreender o funcionamento do módulo `smbnt`, identificar possíveis combinações de credenciais válidas e verificar o acesso aos compartilhamentos de rede.
 
 ## 2. Ambiente utilizado
 

@@ -24,6 +24,10 @@ Em seguida, foi acessada a funcionalidade **Brute Force**, que disponibiliza um 
 
 - Username
 - Password
+- 
+**Evidência do formulário:**
+
+![Formulário Brute Force](../../screenshots/web-dvwa/formulario-brute-force.png)
 
 Também foi analisado o código-fonte da funcionalidade para identificar os parâmetros utilizados no processo de autenticação.
 
